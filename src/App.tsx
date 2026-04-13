@@ -13,14 +13,17 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Determine basename based on environment
+const basename = import.meta.env.DEV ? '/khelega' : '/';
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <BrowserRouter basename="/khelega">
+      <BrowserRouter basename={basename}>
         <AuthProvider>
           <Toaster />
           <Sonner />
-          <Routes >
+          <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/teams" element={<Teams />} />
             <Route path="/matches" element={<Matches />} />
